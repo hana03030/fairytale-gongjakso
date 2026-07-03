@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* 디자인 시스템 세팅 */
+@theme {
+    /* 컬러 세팅 */
+    --color-primary: #639699;
+    --color-primary-light: #6b9fa3;
+
+    --color-sub-blue: #86c9d8;
+    --color-sub-light-blue: #94c7d3;
+    --color-sub-dark-blue: #4f6e94;
+    --color-sub-light-yellow: #fff8d3;
+
+    --color-white: #ffffff;
+    --color-off-white: #f7f7f7;
+    --color-black: #000000;
+
+    --color-text-primary: #3f3f3f;
+    --color-text-secondary: #767676;
+
+    --color-border-gray: #dddddd;
+    --color-border-light-gray: #f0f0f0;
+
+    /* 블랙 50% */
+    --color-black-50: rgba(255, 255, 255, 0.5);
+    /* 화이트 50% */
+    --color-white-50: rgba(0, 0, 0, 0.5);
+
+    /* 타이포그래피 크기 세팅 */
+    --text-96: 96px;
+    --text-64: 64px;
+    --text-48: 48px;
+    --text-36: 36px;
+    --text-32: 32px;
+    --text-24: 24px;
+    --text-20: 20px;
+
+    /* font 변수 매핑 */
+    --font-cafe24: var(--font-cafe24), sans-serif;
+    --font-logo: var(--font-logo), sans-serif;
+}
+
+@layer base {
+    body {
+        font-family: var(--font-noto-sans), sans-serif;
+        @apply overflow-hidden select-none bg-slate-950 text-text-primary antialiased;
+    }
+}
