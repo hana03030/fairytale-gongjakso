@@ -1,0 +1,5 @@
+세팅용 컴포넌트
+
+- ThemeSelector.tsx
+- CharacterSelector.tsx
+- StyleSelector.tsx

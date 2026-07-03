@@ -1,0 +1,5 @@
+동화 구도용 컴포넌트
+
+- 16:9 가로 화면 텍스트 그림 뷰어 StoryViewer
+- 선택지 3종 세트 ChoiceGroup
+- 그림판 기능 및 AI 표지 매핑 컴포넌트 BookCoverEditor
