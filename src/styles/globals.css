@@ -38,6 +38,16 @@
     /* 폰트 패밀리 매핑 */
     --font-cafe24: var(--font-cafe24), sans-serif;
     --font-logo: var(--font-logo), sans-serif;
+
+    /* 둥글기 Border Radius 세팅 */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+
+    /* 버튼용 둥글기 */
+    --radius-button-square: 28px
 }
 
 @layer base {
