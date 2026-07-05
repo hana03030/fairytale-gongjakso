@@ -1,5 +1,6 @@
 // 상수 오브젝트
 import { ThemeType } from '@/types/story';
+import { ArtStyleType } from '@/types/story';
 
 // 배경 테마별 추천 캐릭터
 export const RECOMMENDED_CHARACTERS: Record<ThemeType, string[]> = {
@@ -139,3 +140,53 @@ export const OCEAN_CHARACTER_LIST = [
     localImg: '/images/select-char/char-fisherman.png',
   },
 ];
+
+// 그림 스타일 데이터 목록
+export const ART_STYLES: {
+  id: ArtStyleType;
+  label: string;
+  localImg: string;
+  prompt: string;
+}[] = [
+  {
+    id: 'watercolor',
+    label: '수채화',
+    localImg: '/images/select-style/style-watercolor.png',
+    prompt:
+      'Soft pastel watercolor storybook illustration, fantasy, magical, detailed blending',
+  },
+  {
+    id: 'animation3d',
+    label: '애니메이션', // 3d 애니메이션
+    localImg: '/images/select-style/style-animation.png',
+    prompt:
+      'Cute 3D clay animation style, pixar style, vibrant colors, soft lighting, smooth textures',
+  },
+  {
+    id: 'crayon', // 손그림
+    label: '손그림',
+    localImg: '/images/select-style/style-crayon.png',
+    prompt:
+      'Children drawing style, crayon and oil pastel texture, textured paper, colorful, cozy hand-drawn look',
+  },
+  {
+    id: 'paperart',
+    label: '페이퍼아트',
+    localImg: '/images/select-style/style-paperart.png',
+    prompt:
+      'Detailed 3D paper cut craft style, layered paper art, depth of field, paper textures, whimsical shadow',
+  },
+];
+
+// 캐릭터 한글명 -> 영어 프롬프트 변환용 딕셔너리 (바다 테마)
+export const CHARACTER_ENGLISH_NAMES: Record<string, string> = {
+  인어공주: 'a cute little mermaid princess with shiny scales',
+  왕자: 'a handsome little ocean prince',
+  해적: 'a friendly cartoon pirate with a smile',
+  돌고래: 'a happy playful dolphin',
+  상어: 'a cute little baby shark',
+  고래: 'a giant gentle blue whale',
+  바다거북: 'a friendly little sea turtle',
+  해파리: 'a glowing colorful jellyfish',
+  어부: 'a kind old fisherman with a fishing rod',
+};
