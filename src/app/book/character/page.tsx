@@ -45,7 +45,7 @@ export default function CharacterSelectPage() {
     // 예: character=인어공주,돌고래,상어
     const characterQuery = selectedChars.join(',');
     router.push(
-      `/book/style?theme=${selectedTheme}&character=${characterQuery}`,
+      `/book/style?theme=${selectedTheme}&character=${characterQuery}/style`,
     );
   };
 
