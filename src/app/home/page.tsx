@@ -65,7 +65,7 @@ export default function HomePage() {
           <div className="absolute bottom-[220px] flex items-center justify-center gap-6 w-full">
             {/* 메뉴 1: 동화 생성 */}
             <motion.div {...floatingAnimation(0)}>
-              <Link href="/book" className="block">
+              <Link href="/book/background" className="block">
                 <Image
                   src="/images/buttons/btn-create.png"
                   alt="동화 생성하기"
