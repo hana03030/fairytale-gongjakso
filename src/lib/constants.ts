@@ -80,3 +80,62 @@ export const THEME_NAMES: Record<ThemeType, string> = {
   space: '우주',
   desert: '사막',
 };
+
+// 테마 목록
+export const BACKGROUND_THEMES: {
+  id: ThemeType;
+  label: string;
+  localImg: string;
+}[] = [
+  { id: 'ocean', label: '바다', localImg: '/images/select-bg/bg-ocean.png' },
+  { id: 'castle', label: '궁전', localImg: '/images/select-bg/bg-castle.png' },
+  { id: 'forest', label: '숲', localImg: '/images/select-bg/bg-forest.png' },
+  {
+    id: 'village',
+    label: '마을',
+    localImg: '/images/select-bg/bg-village.png',
+  },
+  { id: 'space', label: '우주', localImg: '/images/select-bg/bg-space.png' },
+  { id: 'desert', label: '사막', localImg: '/images/select-bg/bg-desert.png' },
+];
+
+// 바다 캐릭터
+export const OCEAN_CHARACTER_LIST = [
+  {
+    id: '인어공주',
+    label: '인어공주',
+    localImg: '/images/select-char/char-mermaid.png',
+  },
+  {
+    id: '왕자',
+    label: '왕자',
+    localImg: '/images/select-char/char-prince.png',
+  },
+  {
+    id: '해적',
+    label: '해적',
+    localImg: '/images/select-char/char-pirate.png',
+  },
+  {
+    id: '돌고래',
+    label: '돌고래',
+    localImg: '/images/select-char/char-dolphin.png',
+  },
+  { id: '상어', label: '상어', localImg: '/images/select-char/char-shark.png' },
+  { id: '고래', label: '고래', localImg: '/images/select-char/char-whale.png' },
+  {
+    id: '바다거북',
+    label: '바다거북',
+    localImg: '/images/select-char/char-turtle.png',
+  },
+  {
+    id: '해파리',
+    label: '해파리',
+    localImg: '/images/select-char/char-jellyfish.png',
+  },
+  {
+    id: '어부',
+    label: '어부',
+    localImg: '/images/select-char/char-fisherman.png',
+  },
+];
