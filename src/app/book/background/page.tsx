@@ -8,6 +8,7 @@ import SelectCard from '@/components/book/SelectCard';
 import { BACKGROUND_THEMES } from '@/lib/constants';
 import { ThemeType } from '@/types/story';
 import { useDragScroll } from '@/hooks/useDragScroll';
+import NextButton from '@/components/book/NextButton';
 
 export default function BackgroundSelectPage() {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function BackgroundSelectPage() {
 
       <Header type={2} />
 
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1400px] px-12">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-fit px-12">
         <h2 className="font-cafe24 text-48 text-white text-center tracking-wide mb-14">
           배경을 선택해주세요
         </h2>
@@ -46,7 +47,7 @@ export default function BackgroundSelectPage() {
         <div
           ref={scrollRef}
           {...scrollProps}
-          className="w-full overflow-x-auto flex items-center gap-10 scrollbar-hide snap-x select-none scroll-smooth"
+          className="w-full overflow-x-auto flex items-center gap-10 scrollbar-hide snap-x select-none scroll-smooth p-4"
         >
           {BACKGROUND_THEMES.map((theme) => (
             <div key={theme.id} className="snap-center shrink-0">
@@ -60,19 +61,7 @@ export default function BackgroundSelectPage() {
           ))}
         </div>
       </div>
-      {selectedTheme && (
-        <div
-          onClick={handleNextStep}
-          className="absolute bottom-10 right-10 cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20"
-        >
-          <Image
-            src="/images/icons/icon-next-arrow.png"
-            alt="다음 단계로"
-            width={100}
-            height={50}
-          />
-        </div>
-      )}
+      <NextButton visible={!!selectedTheme} onClick={handleNextStep} />
     </main>
   );
 }
