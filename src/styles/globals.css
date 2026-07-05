@@ -57,3 +57,15 @@
         @apply overflow-hidden select-none bg-slate-950 text-text-primary antialiased;
     }
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 브라우저용 */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE, 엣지용 */
+    scrollbar-width: none;
+    /* 파이어폭스용 */
+}
