@@ -36,7 +36,6 @@ export default function SelectCard({
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onMouseUp={handleMouseUp}
-        onClick={onClick}
         className={cn(
           // 공통 스타일
           'relative w-50 h-50 rounded-full flex items-center justify-center cursor-pointer overflow-hidden bg-white transition-all duration-200',
