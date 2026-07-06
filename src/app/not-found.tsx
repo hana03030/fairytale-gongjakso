@@ -22,11 +22,15 @@ export default function NotFound() {
 
       <div className="z-10 flex justify-center items-center text-center px-[4vw] gap-14">
         {/* 캐릭터나 길 잃은 아이콘 배치 */}
-        <img
-          src="/images/char-not-found.png"
-          alt="notfound 캐릭터"
-          className="w-[26vw]"
-        />
+        <div className="relative w-[24vw] aspect-square">
+          <Image
+            src="/images/char-not-found.png"
+            alt="notfound 캐릭터"
+            fill
+            className="object-contain"
+            draggable={false}
+          />
+        </div>
 
         <div className="flex flex-col justify-center items-center">
           <h2 className="font-cafe24 text-[3vw] text-text-primary mb-4">
