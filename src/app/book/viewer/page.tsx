@@ -9,6 +9,7 @@ import { DUMMY_STORY_TREE } from '@/lib/storyDummy';
 import { ART_STYLES, CHARACTER_ENGLISH_NAMES } from '@/lib/constants';
 import { ArtStyleType } from '@/types/story';
 import { motion, AnimatePresence } from 'framer-motion';
+import CloseButton from '@/components/common/CloseButton';
 
 interface FixedPromptProps {
   theme: string;
@@ -113,19 +114,10 @@ export default function BookViewerPage() {
         onChoiceClick={handleChoiceClick}
       />
 
-      {/* 절대위치 닫기 버튼 */}
-      <button
-        onClick={() => setShowExitModal(true)}
-        className="absolute top-[3vh] right-[3vw] z-30 cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 select-none"
-      >
-        <Image
-          src="/images/icons/icon-close.png"
-          alt="동화 만들기 중지"
-          width={50}
-          height={50}
-          draggable={false}
-        />
-      </button>
+      {/* 닫기 버튼 */}
+      <div className="absolute top-[4vh] right-[4vw] z-30">
+        <CloseButton onClick={() => setShowExitModal(true)} size={50} />
+      </div>
 
       {/* 모달 */}
       {showExitModal && (
