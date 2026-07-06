@@ -50,7 +50,7 @@ export default function Header({
         {hasProfile ? (
           // 1, 2번 유형
           <div className="flex items-center relative">
-            <div className="relative w-24 h-24 rounded-full overflow-hidden z-20 bg-white border-8 border-primary ">
+            <div className="relative w-[8vw] h-[8vw] rounded-full overflow-hidden z-20 bg-white border-8 border-primary ">
               <Image
                 src={avatarUrl}
                 alt="프로필"
@@ -58,7 +58,7 @@ export default function Header({
                 className="object-cover"
               />
             </div>
-            <div className="bg-primary pl-10 pr-10 py-2 rounded-full -ml-8 z-10">
+            <div className="bg-primary pl-10 pr-10 py-[1vh] rounded-full -ml-8 z-10">
               <span className="font-cafe24 text-24 text-white">
                 {userName} 꼬마 작가
               </span>
