@@ -65,13 +65,13 @@ export default function BookViewerPage() {
   // 분기 선택 처리
   const handleChoiceClick = (nextId: number, isCustom?: boolean) => {
     if (isCustom) {
-      alert('커스텀 작성 페이지는 다음 스텝에 개발 예정입니다! ✍️');
+      alert('커스텀 작성 페이지는 다음 스텝에 개발 예정입니다!');
       return;
     }
 
     if (nextId === 888) {
       router.push(
-        `/book/cover?theme=${theme}&character=${character}&style=${style}`,
+        `/book/title?theme=${theme}&character=${character}&style=${style}`,
       );
       return;
     }
