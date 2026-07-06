@@ -48,6 +48,11 @@ export default function BackgroundSelectPage() {
           ref={scrollRef}
           {...scrollProps}
           className="w-full overflow-x-auto flex items-center gap-10 scrollbar-hide snap-x select-none scroll-smooth p-4"
+          style={{
+            msOverflowStyle: 'none' /* IE, Edge 방어 */,
+            scrollbarWidth: 'none' /* Firefox 방어 */,
+            ...scrollProps.style,
+          }}
         >
           {BACKGROUND_THEMES.map((theme) => (
             <div key={theme.id} className="snap-center shrink-0">
