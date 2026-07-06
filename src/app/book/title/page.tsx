@@ -61,7 +61,7 @@ export default function BookTitlePage() {
       return;
     }
     router.push(
-      `/book/canvas?theme=${theme}&character=${character}&style=${style}&title=${encodeURIComponent(bookTitle)}`,
+      `/book/cover?theme=${theme}&character=${character}&style=${style}&title=${encodeURIComponent(bookTitle)}`,
     );
   };
 
