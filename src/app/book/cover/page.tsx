@@ -130,13 +130,47 @@ export default function BookCanvasPage() {
 
   const handleSaveCover = () => {
     if (!canvasRef.current) return;
-    const dataUrl = canvasRef.current.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataUrl;
-    link.download = `${bookTitle}_표지.png`;
-    link.click();
-    alert('멋진 표지가 완성되어 내 앨범에 쏙 저장되었습니다!');
-    router.push('/home');
+
+    // 캔버스 그린 내용을 문자열(Base64)로 추출
+    const coverImageData = canvasRef.current.toDataURL('image/png');
+
+    // 앨범에 저장할 하나의 책 데이터 객체 만들기
+    const newBook = {
+      id: Date.now(), // 고유 ID용 타임스탬프
+      title: bookTitle,
+      coverImage: coverImageData,
+      theme: theme,
+      character: character,
+      style: style,
+      date: new Date().toLocaleDateString(),
+      // 테스트용 더미 본문 세팅
+      stories: [
+        '맑고 푸른 바다 속, 끝없이 펼쳐진 수평선 너머에는 돌고래들이 자유롭게 헤엄치며 살아가고 있었어요.',
+        '그 중에서도 가장 빠르고 용감한 돌고래는 돌돌이와 아리아였죠.',
+        '어느 날, 바다 저편에서 거대한 폭풍우가 몰아치기 시작했어요.',
+        '돌돌이와 아리아는 친구들을 안전한 동굴로 대피시키기 위해 헤엄쳤습니다.',
+        '마침내 폭풍우가 지나가고, 바다에는 다시 아름다운 평화가 찾아왔답니다.',
+      ],
+    };
+
+    // 기존 내역 가져와서 합친 후 다시 저장하기
+    const existingBooksRaw = localStorage.getItem('fairytale_album');
+    const existingBooks = existingBooksRaw ? JSON.parse(existingBooksRaw) : [];
+
+    // 최신작이 맨 앞에 오도록 추가
+    localStorage.setItem(
+      'fairytale_album',
+      JSON.stringify([newBook, ...existingBooks]),
+    );
+
+    // 기존 이미지 다운로드 코드 유지
+    // const link = document.createElement('a');
+    // link.href = coverImageData;
+    // link.download = `${bookTitle}_표지.png`;
+    // link.click();
+
+    alert('나만의 동화책이 동화 앨범 보관함에 등록되었습니다!');
+    router.push('/album'); // 앨범 페이지로 이동
   };
 
   return (
