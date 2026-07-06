@@ -80,7 +80,7 @@ export default function HomePage() {
             <motion.div {...floatingAnimation(0.4)}>
               {' '}
               {/* delay 0.4초로 엇박자 */}
-              <Link href="/library" className="block w-[15vw]">
+              <Link href="/album" className="block w-[15vw]">
                 <Image
                   src="/images/buttons/btn-album.png"
                   alt="동화 앨범 가기"
