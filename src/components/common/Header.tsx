@@ -40,7 +40,7 @@ export default function Header({
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-10 py-8 pointer-events-none">
+    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-3 md:px-10 md:py-8 pointer-events-none">
       {/* pointer-events-auto를 주면 
         헤더의 투명한 빈 공간을 클릭했을 때 뒷배경 요소들이 정상적으로 클릭됨
       */}
@@ -50,7 +50,7 @@ export default function Header({
         {hasProfile ? (
           // 1, 2번 유형
           <div className="flex items-center relative">
-            <div className="relative w-[8vw] h-[8vw] rounded-full overflow-hidden z-20 bg-white border-8 border-primary ">
+            <div className="relative w-12 h-12 md:w-[6vw] md:h-[6vw] rounded-full overflow-hidden z-20 bg-white border-4 md:border-8 border-primary shadow-sm">
               <Image
                 src={avatarUrl}
                 alt="프로필"
@@ -58,8 +58,8 @@ export default function Header({
                 className="object-cover"
               />
             </div>
-            <div className="bg-primary pl-10 pr-10 py-[1vh] rounded-full -ml-8 z-10">
-              <span className="font-cafe24 text-24 text-white">
+            <div className="bg-primary pl-8 pr-6 md:pl-10 md:pr-10 py-[0.5vw] rounded-full -ml-6 md:sub-ml-8 z-10 flex items-center">
+              <span className="font-cafe24 text-14 md:text-24 text-white tracking-wide">
                 {userName} 꼬마 작가
               </span>
             </div>
@@ -74,7 +74,7 @@ export default function Header({
       <div className="flex items-center gap-4 pointer-events-auto">
         {/* 1, 2번 유형: 우측 아이콘 바 */}
         {hasProfile && (
-          <div className="flex items-center gap-10 bg-transparent">
+          <div className="flex items-center gap-4 md:gap-10 bg-transparent">
             {/* 2번 유형: 홈 아이콘 */}
             {type === 2 && (
               <Link
