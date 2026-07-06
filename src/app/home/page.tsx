@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* 중앙 레이어 */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1200px] h-full">
         {/* 무지개 책 컨테이너 */}
-        <div className="relative w-[1100px] h-[800px] flex items-center justify-center">
+        <div className="relative w-screen h-[80vh] flex items-center justify-center">
           <Image
             src="/images/rainbow-book.png"
             alt="무지개 동화책"
@@ -65,7 +65,7 @@ export default function HomePage() {
           <div className="absolute bottom-[220px] flex items-center justify-center gap-6 w-full">
             {/* 메뉴 1: 동화 생성 */}
             <motion.div {...floatingAnimation(0)}>
-              <Link href="/book/background" className="block">
+              <Link href="/book/background" className="block w-[20vw]">
                 <Image
                   src="/images/buttons/btn-create.png"
                   alt="동화 생성하기"
@@ -80,7 +80,7 @@ export default function HomePage() {
             <motion.div {...floatingAnimation(0.4)}>
               {' '}
               {/* delay 0.4초로 엇박자 */}
-              <Link href="/library" className="block">
+              <Link href="/library" className="block w-[15vw]">
                 <Image
                   src="/images/buttons/btn-album.png"
                   alt="동화 앨범 가기"
@@ -95,7 +95,7 @@ export default function HomePage() {
             <motion.div {...floatingAnimation(0.2)}>
               {' '}
               {/* delay 0.2초로 엇박자 */}
-              <Link href="/world" className="block">
+              <Link href="/world" className="block w-[18vw]">
                 <Image
                   src="/images/buttons/btn-world.png"
                   alt="동화 세상 구경"
