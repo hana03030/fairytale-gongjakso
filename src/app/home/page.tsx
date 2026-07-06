@@ -62,7 +62,7 @@ export default function HomePage() {
           />
 
           {/* 페이지 연결 3개 버튼 그룹 */}
-          <div className="absolute bottom-[220px] flex items-center justify-center gap-6 w-full">
+          <div className="absolute bottom-[25vh] flex items-center justify-center gap-6 w-full">
             {/* 메뉴 1: 동화 생성 */}
             <motion.div {...floatingAnimation(0)}>
               <Link href="/book/background" className="block w-[20vw]">
