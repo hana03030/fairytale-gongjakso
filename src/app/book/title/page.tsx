@@ -31,7 +31,7 @@ function generateFixedImageUrl({
     .map((char) => CHARACTER_ENGLISH_NAMES[char.trim()] || char)
     .join(', and ');
 
-  const finalPrompt = `${stylePrompt}, featuring ${englishChars} together, beautifully integrated into a fantasy ${theme} background environment. center composition, looking at the viewer, smiling happily, vibrant colors, extremely detailed masterpiece, clear sharp focus, child-friendly, no distortion, no text, no blur`;
+  const finalPrompt = `A masterpiece of ${stylePrompt}, emphasizing the distinct textures and artistic technique of ${styleId}. Featuring ${englishChars} together looking at the viewer and smiling happily. Beautiful fantasy ${theme} background environment, clear center composition, vibrant and professional color palette. (child-friendly, cute faces, flawless anatomy, regular human bodies, 2 arms, 2 legs:1.5), (perfect hands, perfect fingers:1.4), no text, no blur, no watermark, no extra limbs, no deformed bodies, no mutated hands, no creepy faces`;
 
   return `https://image.pollinations.ai/p/${encodeURIComponent(finalPrompt)}?width=1024&height=576&nologo=true&enhance=true`;
 }
