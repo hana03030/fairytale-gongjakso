@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌈 동화공작소 Web - 생성형 AI 기반 아동 참여형 동화 창작 플랫폼
+**🏆 제20회 한성공학경진대회 금상 수상작 프로젝트**
 
-## Getting Started
+> 기존 팀 프로젝트(Android/Java)로 만들었던 동화 생성 서비스를, 더 넓은 사용자에게 더 쉽게 닿을 수 있도록 **Next.js, TypeScript, Tailwind CSS** 기반 웹 애플리케이션으로 새롭게 리메이크했습니다.
 
-First, run the development server:
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🙌 작품 개요
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+'동화공작소 Web'은 아동이 직접 동화의 테마와 등장인물, 스토리 라인을 선택하며 이야기를 만들어가는 과정을 통해 **창의력, 스토리텔링, 작문 능력**을 자연스럽게 길러주는 교육용 웹 애플리케이션입니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+기존 안드로이드 앱에서 제공하던 생성형 AI 상호작용 경험을 웹 브라우저에서도 즐길 수 있도록 만드는 데 집중했습니다. 그 결과 **스마트폰 가로모드(740x360) 해상도에 맞춘 반응형 인터페이스**와, 아이들이 직접 표지를 꾸밀 수 있는 **커스텀 캔버스 기반 드로잉 기능**, **애니메이션**을 새롭게 추가했습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Web 버전에서 1인 개발로 새롭게 다듬은 부분들
 
-To learn more about Next.js, take a look at the following resources:
+안드로이드 버전을 1인 개발로 웹으로 옮겨오면서 특히 신경 쓴 지점들입니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **기술 스택 전면 전환**  
+  Java/Android Studio 기반이었던 아키텍처를 벗어나, 가상 DOM과 SSR/CSR 최적화를 자유롭게 활용할 수 있는 **Next.js(App Router), TypeScript, Tailwind CSS** 조합으로 다시 설계했습니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Framer Motion 기반 애니메이션**  
+  메인 화면의 세 메뉴 버튼(동화 생성/앨범/세상)에는 각각 Y축으로 둥둥 떠다니는 애니메이션을 넣고, 버튼마다 딜레이 값을 다르게 줘서(0초/0.2초/0.4초) 세 버튼이 같은 박자로 움직이지 않고 자연스럽게 엇박자로 떠 있도록 만들었습니다. 동화 진행 화면에서도 선택지 카드가 `AnimatePresence`로 부드럽게 나타나고 사라지도록 처리해, 다음 이야기를 고르는 순간마다 화면이 뚝뚝 끊기지 않고 이어지도록 신경 썼습니다.
 
-## Deploy on Vercel
+* **AI 일러스트 프롬프트 엔진 재구축**  
+  서비스가 종료된 Karlo 엔진을 대체하기 위해 **Pollinations.ai API**를 새로 연동했고, 아동용 동화에 맞는 화풍을 유지하면서 인체 왜곡을 방지하는 네거티브 퀄리티 태그 동기화 로직을 직접 구축했습니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* **모바일 가로 모드(740x360) 반응형 최적화**  
+  세로 높이가 극단적으로 좁은 스마트폰 가로 모드 환경에서도 화면이 깨지지 않도록, 헤더 컴포넌트를 유동적으로 만들고 이젤/캔버스 컴포넌트에 가상 스케일 압축을 적용했습니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **가로 드래그 스크롤 훅 구현**  
+  마우스 그랩과 터치 무브 이벤트를 추적하는 관성 스크롤 로직을 커스텀 훅으로 직접 구현해, 동화 앨범 페이지에서 네이티브 앱에 가까운 스크롤 경험을 만들었습니다. 드래그 이동과 카드 클릭이 서로 오작동하지 않도록 별도의 충돌 방지 처리도 함께 적용했습니다.
+
+---
+
+## ⚙️ 적용 기술 / 구조
+
+* **Framework**: Next.js 14+ (App Router)
+* **Language**: TypeScript
+* **Styling**: Tailwind CSS
+* **Animation**: Framer Motion
+* **AI API Engine**: Pollinations.ai (Image Generation)
+* **Storage**: Web LocalStorage
+* **Design Tool**: Figma
+
+---
+
+## 🎨 주요 화면 구조 및 컴포넌트 모듈화
+
+### 📦 컴포넌트 모듈화 (Component Driven Development)
+
+* **`CloseButton.tsx`**
+  프로젝트 전반(제목 설정, 그림판, 앨범 뷰어 등)에서 반복적으로 쓰이는 닫기 버튼을, 마우스 호버/액티브 시의 스케일 애니메이션까지 포함해 하나의 컴포넌트로 모듈화했습니다.
+
+* **`StoryDisplay.tsx`**
+  동화 본문이 한 글자씩 나타나는 타이핑 효과는 `setInterval`로 직접 만든 커스텀 로직으로, 글자 하나하나를 큐에 쌓아뒀다가 순서대로 꺼내 보여주는 방식입니다. 화면을 터치하면 남은 글자를 기다리지 않고 즉시 전체 문장을 노출하는 스킵 기능도 함께 넣었고, 타이핑이 끝난 뒤에는 `AnimatePresence`로 선택지 영역이 아래에서 위로 튀어 오르며 등장하도록 처리했습니다. 이 본문 레이아웃과 타이핑·스킵 로직은 동화 제작 과정과 앨범 뷰어 양쪽에서 옵션으로 분리해 재사용할 수 있게 만들어 결합도는 낮추고 응집도는 높였습니다.
+
+* **`FairyTaleCard.tsx`**
+  가로 스크롤 레이아웃 안에서 2열 5행 그리드든 플렉스 기반 레이아웃이든 카드 크기가 깨지지 않도록, `flex-shrink-0`과 `aspect-[400/600]` 비율을 적용한 디자인 보드로 분리했습니다.
+
+### 🖼️ 컴포넌트 맵 프레임워크
+
+1. **표지 그림판 이젤 캔버스 (`/book/canvas`)**
+   * HTML5 Canvas API를 활용해 펜 그리기, 지우개, 전체 채우기, 리셋 기능을 직접 구현
+   * 펜 굵기(`penSize`)와 지우개 굵기(`eraserSize`)를 각각 독립적으로 조절할 수 있는 슬라이더와 커스텀 트랙 스타일을 적용
+   * 이젤 배경 이미지(`500x704`)와 실제 그리기 영역(`400x600`)을 `top: 32px, left: 50px` 좌표로 정확히 맞춰, 그림이 이젤 위에 딱 들어맞도록 처리
+
+2. **동화 앨범 보관함 (`/album`)**
+    * 커스텀 훅 기반의 무한 가로 드래그 인터랙션을 구현하고, 브라우저 기본 스크롤바는 `[&::-webkit-scrollbar]:hidden`으로 완전히 숨겨 자연스러운 UI를 유지
+
+3. **독서 모드 뷰어 (`/album/viewer`)**
+   * 동화 제작 당시 생성된 원본 프롬프트의 해시값을 그대로 추적해, 다시 열어봐도 동일한 화풍의 일러스트가 복원되도록 처리하고 한 손으로도 편하게 넘길 수 있는 페이징 UI를 구현
+
+4. **라벨 라우트 예외 처리**
+   * **`not-found.tsx`**: 유효하지 않은 주소로 접근했을 때, 아동용 테마에 맞는 길찾기 안내 화면으로 자연스럽게 복귀하도록 구현
+   * **`/world`**: 아직 오픈하지 않은 월드맵 메뉴에 진입했을 때 당황하지 않도록, 마법 세계관에 맞춘 안내 인터페이스로 유연하게 대응
+
+---
+
+## 👨‍💻 개발자
+
+[**이주현**](https://github.com/hana03030)
+
+- UI/UX 디자인 고도화
+- Frontend 아키텍처 설계
+- AI 프롬프트 프레임 연동
+- 커스텀 훅 및 그림판 모듈 개발
