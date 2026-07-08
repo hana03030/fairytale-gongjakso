@@ -65,9 +65,9 @@ export default function CharacterSelectPage() {
       <Header type={2} />
 
       {/* 콘텐츠 메인 레이어 */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1400px] px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1400px] px-6 sm:mt-10">
         {/* 타이틀 */}
-        <h2 className="font-cafe24 text-48 text-white text-center mb-5">
+        <h2 className="font-cafe24 text-48 text-white text-center mb-5 md:text-48 sm:text-24 sm:mb-0">
           등장인물을 선택해주세요
         </h2>
 
@@ -76,7 +76,7 @@ export default function CharacterSelectPage() {
             - gap-x-8, gap-y-10: 피그마 배율에 맞춘 조밀한 간격
             - max-h-[500px] overflow-y-auto: 혹시 아이템이 너무 많아지면 내부 세로 스크롤 방어
         */}
-        <div className="grid grid-cols-5 gap-x-10 gap-y-8 justify-items-center w-full max-w-fit mx-auto px-4 py-4">
+        <div className="grid grid-cols-5 gap-x-10 gap-y-8 justify-items-center w-full max-w-fit mx-auto px-4 py-4 md:gap-x-10 md:gap-y-8 sm:gap-x-6 sm:gap-y-2">
           {OCEAN_CHARACTER_LIST.map((char) => {
             // 현재 캐릭터가 선택된 배열 안에 포함되어 있는지 확인
             const isSelected = selectedChars.includes(

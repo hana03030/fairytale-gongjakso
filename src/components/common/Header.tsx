@@ -25,11 +25,6 @@ export default function Header({
   // 3, 4번 유형은 프로필이 없는 유형
   const hasProfile = type === 1 || type === 2;
 
-  // 뒤로 가기 핸들러 (4번 유형용)
-  const handleBack = () => {
-    router.back();
-  };
-
   // X 버튼 핸들러 (3, 4번 유형 공통 - 기본값은 홈으로 이동하되 onClose가 있으면 그걸 실행)
   const handleClose = () => {
     if (onClose) {
@@ -86,6 +81,7 @@ export default function Header({
                   alt="홈"
                   width={50}
                   height={50}
+                  className="w-10 h-auto md:w-12 sm:w-6"
                 />
               </Link>
             )}
@@ -96,6 +92,7 @@ export default function Header({
                 alt="업적"
                 width={50}
                 height={50}
+                className="w-10 h-auto md:w-12 sm:w-6"
               />
             </button>
             <button className="hover:scale-110 transition-transform cursor-pointer">
@@ -104,6 +101,7 @@ export default function Header({
                 alt="설정"
                 width={50}
                 height={50}
+                className="w-10 h-auto md:w-12 sm:w-6"
               />
             </button>
           </div>
@@ -120,7 +118,7 @@ export default function Header({
               alt="닫기"
               width={50}
               height={50}
-              className=""
+              className="w-10 h-auto md:w-12 sm:w-6"
             />
           </button>
         )}
@@ -134,6 +132,7 @@ export default function Header({
                 alt="뒤로가기"
                 width={50}
                 height={50}
+                className="w-10 h-auto md:w-12 sm:w-6"
               />
             </button>
             <button className="hover:scale-110 transition-transform cursor-pointer">
@@ -142,6 +141,7 @@ export default function Header({
                 alt="AI 로봇 보조"
                 width={60}
                 height={60}
+                className="w-10 h-auto md:w-12 sm:w-6"
               />
             </button>
             <button
@@ -153,6 +153,7 @@ export default function Header({
                 alt="닫기"
                 width={50}
                 height={50}
+                className="w-10 h-auto md:w-12 sm:w-6"
               />
             </button>
           </div>

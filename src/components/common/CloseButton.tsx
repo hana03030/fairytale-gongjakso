@@ -21,7 +21,7 @@ export default function CloseButton({ onClick, size = 50 }: CloseButtonProps) {
         width={size}
         height={size}
         draggable={false}
-        className="drop-shadow-md group-hover:opacity-90 transition-opacity"
+        className="drop-shadow-md group-hover:opacity-90 transition-opacity w-10 h-auto md:w-12 sm:w-6"
       />
     </button>
   );

@@ -205,7 +205,7 @@ export default function BookCanvasPage() {
       </div>
 
       {/* 팔레트, 이젤, 도구함 정렬용 */}
-      <div className="flex justify-center items-center m-auto gap-10">
+      <div className="flex justify-center items-center m-auto gap-10 md:gap-10 sm:gap-2">
         {/* 왼쪽 팔레트 영역 */}
         <div className="w-[16vw] bg-[#FFF8D3] rounded-[48px] px-8 py-12 flex flex-wrap justify-center shadow-xl z-10">
           <div className="grid grid-cols-2 gap-[2vw] w-full justify-items-center">
@@ -261,53 +261,63 @@ export default function BookCanvasPage() {
           </div>
         </div>
 
-        {/* 가운데 캔버스 영역 */}
-        <div className="flex flex-col items-center justify-center z-10">
-          <h3 className="font-cafe24 text-[2.2vw] text-white mb-6 text-center max-w-[600px] truncate">
-            책 제목: {bookTitle}
-          </h3>
-
-          {/* 이젤 컨테이너 */}
-          <div
-            className="relative bg-contain bg-no-repeat bg-center flex items-center justify-center"
-            style={{
-              backgroundImage: `url('/images/easel.png')`,
-              width: '500px',
-              height: '704px',
-            }}
-          >
-            {/* 캔버스 (400 x 600) */}
-            <canvas
-              ref={canvasRef}
-              width={400}
-              height={600}
-              onMouseDown={startDrawing}
-              onMouseMove={draw}
-              onMouseUp={stopDrawing}
-              onMouseLeave={stopDrawing}
-              onTouchStart={startDrawing}
-              onTouchMove={draw}
-              onTouchEnd={stopDrawing}
-              // 캔버스 좌표 조절 - 이젤에 맞춤
-              className="bg-white rounded-[12px] shadow-inner cursor-crosshair block touch-none absolute"
-              style={{
-                // 캔버스가 내려가 있으면 값을 줄이면 됨
-                top: '34px',
-                // 좌우 여백은 50이면 맞음
-                left: '50px',
-              }}
-            />
-          </div>
+        {/* 가운데 캔버스 및 이젤 영역 */}
+        <div
+          className="
+            // 기본 모드
+            relative bg-transparent flex items-center justify-center 
+            h-[58vh] max-h-[230px] aspect-[400/600] transition-all duration-200
+            
+            // 모바일 모드
+            sm:bg-contain sm:bg-no-repeat sm:bg-center sm:w-[188px] sm:h-[264px] sm:max-h-none sm:aspect-auto
+            
+            md:w-[500px] md:h-[704px]
+          "
+          style={{
+            backgroundImage: `url('/images/easel.png')`,
+          }}
+        >
+          {/* 캔버스 도화지 */}
+          <canvas
+            ref={canvasRef}
+            width={400}
+            height={600}
+            onMouseDown={startDrawing}
+            onMouseMove={draw}
+            onMouseUp={stopDrawing}
+            onMouseLeave={stopDrawing}
+            onTouchStart={startDrawing}
+            onTouchMove={draw}
+            onTouchEnd={stopDrawing}
+            className="
+              bg-white rounded-[8px] shadow-md cursor-crosshair block touch-none 
+              relative w-full h-full top-0 left-0
+              
+              sm:absolute sm:w-[150px] sm:h-[225px] sm:top-[13px] sm:left-[19px]
+              
+              md:w-[400px] md:h-[600px] md:top-[34px] md:left-[50px]
+            "
+          />
         </div>
 
         {/* 오른쪽 도구함 영역 */}
-        <div className="w-[16vw] bg-[#FFF8D3] rounded-[48px] px-8 py-12 flex flex-wrap gap-8 justify-center shadow-xl z-10">
+        <div
+          className="
+            fixed bottom-4 left-1/2 -translate-x-1/2 w-[92vw] h-20 bg-[#FFF8D3] rounded-[24px] px-4 py-2 
+            flex flex-row gap-4 items-center justify-around shadow-xl z-50 transition-all
+            
+            sm:fixed sm:bottom-auto sm:left-auto sm:translate-x-0 sm:relative 
+            sm:w-[12vw] sm:max-w-[100px] md:max-w-none sm:h-auto sm:rounded-[40px] sm:px-4 sm:py-6 
+            sm:flex-col sm:flex-nowrap sm:gap-4 sm:justify-center
+          "
+        >
           {/* 펜 기능 버튼 */}
           <button
             onClick={() => setTool('pen')}
-            className={`w-full flex justify-center items-center transition-all cursor-pointer ${
-              tool === 'pen' ? 'scale-115' : 'hover:scale-105'
-            }`}
+            className={`flex justify-center items-center transition-all cursor-pointer 
+              w-[6vw] h-[6vw] sm:w-12 sm:h-12 md:w-[6vw] md:h-[6vw] ${
+                tool === 'pen' ? 'scale-115' : 'hover:scale-105'
+              }`}
           >
             <Image
               src="/images/icons/icon-pen.png"
@@ -315,12 +325,17 @@ export default function BookCanvasPage() {
               width={100}
               height={100}
               draggable={false}
+              className="w-full h-full object-contain"
             />
           </button>
 
           {/* 펜 굵기 조절 슬라이더 */}
           <div
-            className={`w-full mt-[-20px] px-6 flex flex-col items-center gap-1 transition-opacity duration-200 ${tool === 'pen' ? 'opacity-100' : 'opacity-40 pointer-events-none'}`}
+            className={`
+              w-14 sm:w-full transition-opacity duration-200 flex flex-col items-center gap-1 
+              sm:mt-[-10px] sm:px-1 
+              ${tool === 'pen' ? 'opacity-100' : 'opacity-40 pointer-events-none'}
+            `}
           >
             <input
               type="range"
@@ -328,16 +343,17 @@ export default function BookCanvasPage() {
               max="30"
               value={penSize}
               onChange={(e) => setPenSize(Number(e.target.value))}
-              className="w-full accent-[#927AF4] cursor-pointer rounded-full"
+              className="w-full accent-[#927AF4] cursor-pointer rounded-full scale-90 sm:scale-100"
             />
           </div>
 
           {/* 지우개 기능 버튼 */}
           <button
             onClick={() => setTool('eraser')}
-            className={`w-full flex justify-center items-center transition-all cursor-pointer ${
-              tool === 'eraser' ? 'scale-115' : 'hover:scale-105'
-            }`}
+            className={`flex justify-center items-center transition-all cursor-pointer 
+                w-[6vw] h-[6vw] sm:w-12 sm:h-12 md:w-[6vw] md:h-[6vw] ${
+                  tool === 'eraser' ? 'scale-115' : 'hover:scale-105'
+                }`}
           >
             <Image
               src="/images/icons/icon-eraser.png"
@@ -345,12 +361,17 @@ export default function BookCanvasPage() {
               width={100}
               height={100}
               draggable={false}
+              className="w-full h-full object-contain"
             />
           </button>
 
           {/* 지우개 굵기 */}
           <div
-            className={`w-full mt-[-20px] px-6 flex flex-col items-center gap-1 transition-opacity duration-200 ${tool === 'eraser' ? 'opacity-100' : 'opacity-40 pointer-events-none'}`}
+            className={`
+              w-14 sm:w-full transition-opacity duration-200 flex flex-col items-center gap-1
+              sm:mt-[-10px] sm:px-1 
+              ${tool === 'eraser' ? 'opacity-100' : 'opacity-40 pointer-events-none'}
+            `}
           >
             <input
               type="range"
@@ -358,16 +379,17 @@ export default function BookCanvasPage() {
               max="50"
               value={eraserSize}
               onChange={(e) => setEraserSize(Number(e.target.value))}
-              className="w-full accent-[#FC9495] cursor-pointer rounded-full"
+              className="w-full accent-[#FC9495] cursor-pointer rounded-full scale-90 sm:scale-100"
             />
           </div>
 
           {/* 페인트 기능 버튼 */}
           <button
             onClick={() => setTool('paint')}
-            className={`w-full flex justify-center items-center transition-all cursor-pointer ${
-              tool === 'paint' ? 'scale-115' : 'hover:scale-105'
-            }`}
+            className={`flex justify-center items-center transition-all cursor-pointer 
+                w-[6vw] h-[6vw] sm:w-12 sm:h-12 md:w-[6vw] md:h-[6vw] ${
+                  tool === 'paint' ? 'scale-115' : 'hover:scale-105'
+                }`}
           >
             <Image
               src="/images/icons/icon-paint.png"
@@ -375,13 +397,14 @@ export default function BookCanvasPage() {
               width={100}
               height={100}
               draggable={false}
+              className="w-full h-full object-contain"
             />
           </button>
 
           {/* 모두 지우기 기능 버튼 */}
           <button
             onClick={handleClearCanvas}
-            className="w-full flex justify-center items-center transition-all cursor-pointer group"
+            className="flex justify-center items-center transition-all cursor-pointer group w-[6vw] h-[6vw] sm:w-12 sm:h-12 md:w-[6vw] md:h-[6vw]"
           >
             <Image
               src="/images/icons/icon-trash.png"
@@ -389,7 +412,7 @@ export default function BookCanvasPage() {
               width={100}
               height={100}
               draggable={false}
-              className="group-hover:scale-105 transition-transform"
+              className="group-hover:scale-105 transition-transform w-full h-full object-contain"
             />
           </button>
         </div>
