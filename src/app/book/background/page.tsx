@@ -39,7 +39,7 @@ export default function BackgroundSelectPage() {
       <Header type={2} />
 
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-fit px-12">
-        <h2 className="font-cafe24 text-48 text-white text-center tracking-wide mb-14">
+        <h2 className="font-cafe24 text-[6vh] md:text-48 text-white text-center tracking-wide mb-14 sm:mb-2">
           배경을 선택해주세요
         </h2>
 

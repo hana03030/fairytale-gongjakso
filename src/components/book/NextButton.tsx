@@ -28,7 +28,7 @@ export default function NextButton({ visible, onClick }: NextButtonProps) {
             alt="다음 단계로"
             width={100}
             height={50}
-            className="drop-shadow-md"
+            className="drop-shadow-md w-20 h-auto md:w-25 sm:w-12"
             draggable={false}
           />
         </motion.div>

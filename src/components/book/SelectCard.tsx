@@ -30,7 +30,7 @@ export default function SelectCard({
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 select-none">
+    <div className="flex flex-col items-center gap-4 select-none md:gap-4 sm:gap-0">
       {/* 원형 이미지 카드 버튼 */}
       <motion.button
         whileHover={{ scale: 1.08 }}
@@ -38,7 +38,7 @@ export default function SelectCard({
         onMouseUp={handleMouseUp}
         className={cn(
           // 공통 스타일
-          'relative w-50 h-50 rounded-full flex items-center justify-center cursor-pointer overflow-hidden bg-white transition-all duration-200',
+          'relative w-35 h-35 rounded-full flex items-center justify-center cursor-pointer overflow-hidden bg-white transition-all duration-200 md:w-50 md:h-50 sm:w-20 sm:h-20',
 
           // 선택되었을 때 효과
           isSelected ? 'scale-105' : '',
@@ -67,7 +67,7 @@ export default function SelectCard({
       {/* 하단 텍스트 */}
       <span
         className={cn(
-          'font-cafe24 text-36 transition-colors duration-200 text-white',
+          'font-cafe24 text-36 transition-colors duration-200 text-white sm:text-20 md:text-36',
         )}
       >
         {label}
