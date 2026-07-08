@@ -51,12 +51,12 @@ export default function ArtStyleSelectPage() {
       {/* 콘텐츠 메인 레이어 */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[1200px] px-4">
         {/* 타이틀 */}
-        <h2 className="font-cafe24 text-48 text-white text-center tracking-wide mb-14">
+        <h2 className="font-cafe24 text-48 text-white text-center tracking-wide mb-14 md:text-48 sm:text-24 sm:mb-4 md:mb-14">
           그림 스타일을 선택해주세요
         </h2>
 
         {/* 4가지 그림 스타일 배치 (4칸 그리드) */}
-        <div className="grid grid-cols-4 gap-x-12 justify-items-center w-full max-w-[1000px] mx-auto py-6">
+        <div className="grid grid-cols-4 gap-12 justify-items-center max-w-250 mx-auto w-fit md:gap-12 sm:gap-8 ">
           {ART_STYLES.map((style) => {
             const isSelected = selectedStyle === style.id;
 
