@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import CloseButton from '@/components/common/CloseButton';
@@ -52,7 +52,7 @@ function generateFixedImageUrl({
   return `https://image.pollinations.ai/p/${encodeURIComponent(finalPrompt)}?width=1024&height=576&nologo=true&enhance=true`;
 }
 
-export default function AlbumViewerPage() {
+function AlbumViewerContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const bookId = searchParams.get('id');
@@ -156,5 +156,19 @@ export default function AlbumViewerPage() {
         </button>
       )}
     </main>
+  );
+}
+
+export default function AlbumViewerPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-screen h-screen bg-slate-900 text-white flex items-center justify-center font-cafe24">
+          로딩 중...
+        </div>
+      }
+    >
+      <AlbumViewerContent />
+    </Suspense>
   );
 }
