@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import CloseButton from '@/components/common/CloseButton';
@@ -10,7 +10,7 @@ type DrawingEvent =
   | React.MouseEvent<HTMLCanvasElement>
   | React.TouchEvent<HTMLCanvasElement>;
 
-export default function BookCanvasPage() {
+function BookCanvasContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -420,5 +420,13 @@ export default function BookCanvasPage() {
 
       <NextButton visible={true} onClick={handleSaveCover}></NextButton>
     </main>
+  );
+}
+
+export default function BookCanvasPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <BookCanvasContent />
+    </Suspense>
   );
 }

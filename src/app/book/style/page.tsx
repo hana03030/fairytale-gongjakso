@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Header from '@/components/common/Header';
@@ -9,7 +9,7 @@ import NextButton from '@/components/book/NextButton';
 import { ART_STYLES } from '@/lib/constants';
 import { ArtStyleType } from '@/types/story';
 
-export default function ArtStyleSelectPage() {
+function ArtStyleSelectContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -76,5 +76,13 @@ export default function ArtStyleSelectPage() {
       {/* 다음 단계로 가는 우측 하단 버튼 */}
       <NextButton visible={!!selectedStyle} onClick={handleNextStep} />
     </main>
+  );
+}
+
+export default function ArtStyleSelectPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <ArtStyleSelectContent />
+    </Suspense>
   );
 }

@@ -1,14 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import StoryDisplay from '@/components/book/StoryDisplay';
-import ChoiceButton from '@/components/book/ChoiceButton';
 import { DUMMY_STORY_TREE } from '@/lib/storyDummy';
 import { ART_STYLES, CHARACTER_ENGLISH_NAMES } from '@/lib/constants';
 import { ArtStyleType } from '@/types/story';
-import { motion, AnimatePresence } from 'framer-motion';
 import CloseButton from '@/components/common/CloseButton';
 
 interface FixedPromptProps {
@@ -43,7 +41,7 @@ function generateFixedImageUrl({
   return `https://image.pollinations.ai/p/${encodeURIComponent(finalPrompt)}?width=1024&height=576&nologo=true&enhance=true`;
 }
 
-export default function BookViewerPage() {
+function BookViewerContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -149,5 +147,13 @@ export default function BookViewerPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function BookViewerPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <BookViewerContent />
+    </Suspense>
   );
 }
